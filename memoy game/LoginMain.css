@@ -1,0 +1,212 @@
+
+
+  @import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: bubblegum sans;
+    
+}
+.heading{
+    justify-content: center;
+    padding-bottom: 550px;
+    /* padding-left: 500px; */
+    font-size: 50px;
+    color: rgb(23, 56, 18);
+   
+}
+
+body {
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url(assets/background/bg-2.jpg);
+    
+}
+
+.form {
+    border: 5px solid #e6639a87;
+    padding: 20px;
+    text-align: center;
+    width: 600px; /* Adjust the width as needed */
+    position: absolute;
+    height: 500px;
+    width: 400px;
+    margin-top: 60px;
+    border-radius: 20px;
+    background-color: rgba(0, 129, 0, 0.281);
+
+    
+
+}
+
+.userinfo input {
+    width: 100%; 
+    justify-content: center;
+    position: relative;
+    
+    
+
+    /* Make the input fill the container */
+}
+.player-name {
+    font-size: 50px;
+    color: #be4545;
+}
+.input-box{
+    margin-top: 10px;
+    height: 50px;
+    background-color: transparent;
+    border: 2px solid rgb(72, 168, 37);
+    outline: none;
+    
+}
+.age-group{
+    font-size: 30px;
+    padding-top: 6px;
+    color: #be4545;
+}
+.select-whole{
+    margin-top:20px ;
+    height: 120px;
+    color: #e0e6df;
+    width: 350px;
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+    background-color: transparent;
+    border: 2px solid rgb(72, 168, 37);
+}
+/* .form-radio1{
+    height: 80px;
+    width: 80px;
+    border: 1px solid;
+    
+}
+.form-radio2{
+    height: 80px;
+    width: 80px;
+    border: 1px solid; */
+    
+    
+    
+
+.checkbox-wrapper-31:hover .check {
+    stroke-dashoffset: 0;
+  }
+  
+  .checkbox-wrapper-31 {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    padding-top:25px ;
+  }
+  
+  .checkbox-wrapper-31 .background {
+    fill: #ccc;
+    transition: ease all 0.6s;
+    -webkit-transition: ease all 0.6s;
+  }
+  
+  .checkbox-wrapper-31 .stroke {
+    fill: none;
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+    stroke-dashoffset: 100;
+    stroke-dasharray: 100;
+    transition: ease all 0.6s;
+    -webkit-transition: ease all 0.6s;
+  }
+  
+  .checkbox-wrapper-31 .check {
+    fill: none;
+    stroke: #fff;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2px;
+    stroke-dashoffset: 22;
+    stroke-dasharray: 22;
+    transition: ease all 0.6s;
+    -webkit-transition: ease all 0.6s;
+  }
+  
+  .checkbox-wrapper-31 input[type=checkbox] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    margin: 0;
+    opacity: 0;
+    -appearance: none;
+    -webkit-appearance: none;
+  }
+  
+  .checkbox-wrapper-31 input[type=checkbox]:hover {
+    cursor: pointer;
+  }
+  
+  .checkbox-wrapper-31 input[type=checkbox]:checked + svg .background {
+    fill: #6cbe45;
+  }
+  
+  .checkbox-wrapper-31 input[type=checkbox]:checked + svg .stroke {
+    stroke-dashoffset: 0;
+  }
+  
+  .checkbox-wrapper-31 input[type=checkbox]:checked + svg .check {
+    stroke-dashoffset: 0;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+  /* Hide default radio buttons */
+input[type="radio"] {
+    position: absolute;
+    left: -9999px;
+  }
+  
+  /* Style the label to show the background image */
+  label {
+    position: relative;
+    display: inline-block;
+    margin: 5px;
+    cursor: pointer;
+  }
+  
+  .radio-background {
+    width: 100px; /* Adjust the width of the image */
+    height: 100px; /* Adjust the height of the image */
+    display: block;
+    padding-bottom: 25px;
+  }
+  
+  /* Style the label based on the selected state of the radio button */
+  input[type="radio"]:checked + .radio-background {
+    border: 1px solid #e9f1fa; 
+
+    /* Example border color for the selected state */
+
+  }
+ 
+
+
+
+
