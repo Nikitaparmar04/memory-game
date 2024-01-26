@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="PicsFlip! Memory Game for Kids">
+    <meta name="keywords" content="Memory game, memory, memo, game, preschool kids, kids game, toddler game">
+    <meta name="author" content="nikita Parmar">
+    <link rel="stylesheet" href="decor.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>memory game</title>
+</head>
+<body>
+<div class="heading">
+    <h1>Hi , there!!</h1>
+</div>
+<div class="form">
+    <div class="userinfo">
+        <h1 class="player-name">Who wants to</h1>
+        <h1 class="player-name">play ?</h1>
+     <input class="input-box" type="text" name="username" id="username" maxlength="15" aria-label="Type your name here" required>
+    </div>
+    <div class="age-group">
+        <h2>choose a picture</h2>
+
+    </div>
+    <div class="select-whole">
+    <!-- <div class="select">
+        <input class="select-option" type="radio" name="avatar-radio" id="avatar-radio1" value="animal-cartoon" aria-label="cute plant illustrate">
+       <img src="https://i.ibb.co/j3T7F2Y/p1ant.jpg" class="form-radio1" alt="Cute plant illustration" >
+    </div>
+    <div class="select">
+        <input class="select-option" type="radio" name="avatar-radio" id="avatar-radio2" value="animal-realworls" aria-label="cute plant illustrate">
+        <img src="https://i.ibb.co/j3T7F2Y/p1ant.jpg" class="form-radio2" alt="Cute plant illustration" >
+    </div> -->
+    <label for="child">
+        <input type="radio" id="child" name="ageGroup" value="child">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_w1pLOPKfit4AhkCHtLju7ET2rpwMLG_vFQ&usqp=CAU" alt="Child" class="radio-background">
+      </label>
+
+      <label for="adult">
+        <input type="radio" id="adult" name="ageGroup" value="adult">
+        <img src="data:image/jpeg;base64,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" alt="Adult" class="radio-background">
+      </label>
+    </div>
+    <div class="checkbox-wrapper-31">
+        <input checked="" id="checkbox"  type="checkbox">
+        <svg viewBox="0 0 35.6 35.6">
+          <circle class="background" cx="17.8" cy="17.8" r="17.8"></circle>
+          <circle class="stroke" cx="17.8" cy="17.8" r="14.37"></circle>
+          <polyline class="check" points="11.78 18.12 15.55 22.23 25.17 12.87"></polyline>
+        </svg>
+      </div>
+        
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
