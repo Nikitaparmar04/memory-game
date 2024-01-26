@@ -1,6 +1,4 @@
-
-
-  @import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
 
 
 * {
@@ -10,6 +8,11 @@
     font-family: bubblegum sans;
     
 }
+
+:root{
+  font-size: 62.5%;
+}
+
 .heading{
     justify-content: center;
     padding-bottom: 550px;
@@ -36,23 +39,24 @@ body {
     text-align: center;
     width: 600px; /* Adjust the width as needed */
     position: absolute;
-    height: 500px;
+    height: auto;
     width: 400px;
     margin-top: 60px;
     border-radius: 20px;
     background-color: rgba(0, 129, 0, 0.281);
-
-    
-
+    backdrop-filter: blur(5px);
 }
 
-.userinfo input {
+.form:before {
+  box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+  filter: blur(10px);
+}
+
+input {
     width: 100%; 
     justify-content: center;
     position: relative;
-    
-    
-
+    font-size: 4rem;
     /* Make the input fill the container */
 }
 .player-name {
@@ -175,7 +179,7 @@ body {
 
 
 
-
+̥
 
   /* Hide default radio buttons */
 input[type="radio"] {
@@ -205,6 +209,32 @@ input[type="radio"] {
     /* Example border color for the selected state */
 
   }
+
+
+  .gameModes{
+    padding: 1.2rem;
+    display: flex;
+    column-gap: 1.2rem;
+  }
+
+  .mode-btn{
+    padding: 2rem;
+    border: none; 
+    border-radius: 4.2px;
+    font-size: 2.4rem;
+  }
+
+ .easy-lvl{
+  background-color: #6cbe45;
+ }
+
+ .mid-lvl{
+  background-color: yellow;
+ }
+
+ .high-lvl{
+  background-color: #be4545;
+ }
  
 
 

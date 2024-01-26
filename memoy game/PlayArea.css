@@ -10,19 +10,16 @@
 .column{
     background-color: palevioletred;
     height: 100vh;
-    width: 500px;
-    position: fixed;
-     align-items: flex-start;
-    
-
+    width: auto;
+    position:relative;
+    max-width: 355px;
 }
 .card-userinfo{
-    height: 25ch;
-    width: 320px;
-    
+    height: 15ch;
+    width: 250px;
     position: relative;
-    left: 17%;
-    top: 5%;
+    left: 16%;
+    top: 19%;
     background-color: white;
     justify-content: center;
     border: 10px;
@@ -30,42 +27,29 @@
     
 }
 .game-level{
-    height: 13ch;
-    width: 320px;
+    height: 11ch;
+    width: 250px;
     
     position: relative;
     left: 17%;
-    top: 9%;
+    top: 28%;
     background-color: white;
     justify-content: center;
     border: 10px;
     border-radius: 10px;  
 }
-
-
-
-
-
 .wrapper{
         width: 100%;
         height: 100%;
     }
    
-/* .nav {
-  position: fixed;
-  right: 0;
-  display: flex;
-  height: 106px;
-  width: 67.5%;
-  background-color: aqua;
-} */
 .nav {
   position: fixed;
   top: 0%;
   right: 0;
   display: flex;
   height: 106px;
-  width: 67.5%;
+  width: 77%;
   background-color: aqua;
   z-index: 1000; /* Adjust the value as needed */
   padding-top: 5;
@@ -82,7 +66,7 @@
     } 
     
     .score{
-        padding-left: 330px;
+        padding-left: 500px;
          position: relative;
          top:7%;
         font-size: 50px;
@@ -93,81 +77,99 @@
   .main{
     position: fixed;
         right: 0;
-        top: 14%;
-    /* display: flex; */
+        top: 12%;
     height: 100vh;
-    width: 67.5%;
-    /* background-color:rgb(236, 15, 136); */
+    width: 77%;
     background-image: url(assets/background/game2.jpg);
     background-size: cover;
+    padding: 20px;
 
   }
-   /* Style for the main container */
+  .navy {
+    background-color: rgb(108, 108, 179);
+    color: white;
+    padding: 20px;
+    height: 100px; /* Adjust the height as needed */
+    width: 100%; /* Adjust the width as needed */
+    box-sizing: border-box; /* Include padding in total height/width */
+  }
+  
    .main {
-    display: flex;
+    display:grid ;
     flex-wrap: wrap;
     justify-content: space-around;
-  }
-
-  /* Style for each card container */
-  .content-main {
-    width: 30%; /* Set the width of each card container */
-    margin: 10px;
-    perspective: 1000px;
-  }
-
-  /* Style for the card */
-  .thecard {
-    width: 80%;
-    height: 80%; /* Set the height of each card */
-    transform-style: preserve-3d;
-    transition: transform 0.5s;
-    cursor: pointer;
-  }
-
-  
-  .thefront,
-  .theback {
-    width: 80%;
-    height: 80%;
-    position: absolute;
-    backface-visibility: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 5px solid skyblue;
-     /* Optional: Add border for better visibility */
-     border-radius: 7px;
-  }
-
-  /* Style for the back face of the card (rotated 180 degrees) */
-  .theback {
-    transform: rotateY(180deg);
-  }
-.thefront img{
-    max-width: 100%;
-    height: 100%;
+   }
+ 
+.content-main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
+
+
+.thecard {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  border: 2px solid skyblue;
+  border-radius: 5px;
+  background: transparent;
+
+  text-align: center;
+  padding: 30px 30px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  gap: 1%;
+  bottom: 20%;
+}
+
+.theback {
+  transform: rotateY(180deg);
+  width: 90px;
+}
+
+/* Style for the image inside the card */
+.thefront img {
+  max-width: 100%;
+  height: 100%;
+  width: 90px;
+}
+.memo{
+position: relative;
+top: 5%;
+left: 14%;
+font-size:20px;
+}
+.Player-Name{
+  font-size: 20px;
+  margin-left:10px;
+
+}
+
 .card-userinfo h1{
   margin-left: 100px;
   padding-top: 10px;
 }
 .doggy{
-    height: 150px;
+    height: 115px;
+    width: 114px;
+    padding: 3px;
+
 }
 .trophy{
-    height: 100px;
+    height: 90px;
     border-radius: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    gap: 2%;
+    margin-left: 10px;
     
 }
-
-
 .btn-square-md {
-    width: 77px !important;
+    width: 56px !important;
     max-width: 80% !important;
     max-height: 60% !important;
-    height: 77px !important;
+    height:56px !important;
     text-align: center;
     padding: 10px;
     font-size:20px;
@@ -177,13 +179,14 @@
    margin-left: 30px;
    margin-right: 6px;
    border: 4px solid green;
-
+   position: relative;
+   
     }
     .btn-square-md1 {
-        width: 77px !important;
+        width: 56px !important;
         max-width: 80% !important;
         max-height: 60% !important;
-        height: 77px !important;
+        height: 56px !important;
         text-align: center;
         padding: 0px;
         font-size:20px;
@@ -192,12 +195,12 @@
        border-radius:9px;
        border:  4px solid rgb(184, 184, 45);
         }
-        .btn-square-md2 {
-            width: 77px !important;
+    .btn-square-md2 {
+            width: 56px !important;
             max-width: 80% !important;
             max-height: 60% !important;
-            height: 77px !important;
-            text-align: center;
+            height: 56px !important;
+          text-align: center;
             padding: 0px;
             font-size:20px;
             color: #000;
@@ -207,6 +210,32 @@
            margin-left: 8px;
            margin-top: 20px;
             }
+            .where{
+              font-size: 50px;
+              justify-content: center;
+              margin-left: 70px;
+            }
+   .question{
+    height: 60px;
+    width: 60px;
+    margin: 1px;
+   }  
+   .sound{
+    height: 60px;
+    width: 60px;
+    margin: 1px;
+   }  
+   .refresh{
+    height: 60px;
+    width: 60px;
+    margin: 1px;
+   } 
+   .icons{
+    position: fixed;
+    bottom: 15%;
+     margin-left:100px;
+   }    
+
   
             
               
