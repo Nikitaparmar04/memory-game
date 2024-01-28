@@ -1,0 +1,240 @@
+/*
+--- 01 TYPOGRAPHY SYSTEM
+
+
+- Font sizes (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+- Font weights
+
+
+- Line heights
+
+
+- Letter spacing
+
+
+--- 02 COLORS
+
+- Primary:
+- Tints:
+- Shades:
+- Accents:
+- Greys
+
+--- 05 SHADOWS
+
+--- 06 BORDER-RADIUS
+
+--- 07 WHITESPACE
+
+- Spacing system (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    /*font-size: 10px;*/
+    /*10px /16px = 0.625 = 62.5%*/
+    /*Percentage of user's browser font-size setting*/
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "bubblegum sans", "Rubik", sans-serif;
+    line-height: 1;
+    font-weight: 400;
+    color: #555;
+    
+    /*centring the box*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+section {
+    margin: 0 auto;
+}
+
+body {
+    background-image: url(../Memory_Game/assets/background/bg-2.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.primary-heading {
+    font-size: 9.8rem;
+    font-family: inherit;
+    font-weight: 700;
+    color: forestgreen;
+    padding-bottom: 4.8rem;
+}
+
+.pHeading-logo {
+    height: 4.8rem;
+}
+
+.login-form {
+    width: auto;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 3.5rem rgba(0, 0, 0, 0.2);
+    padding: 4rem;
+    /*floating effect*/
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    row-gap: 2.4rem;
+}
+
+.login-form .setting {
+    font-size: 4.8rem;
+    text-align: center;
+    
+}
+
+/*.butext {*/
+/*    background: url('path-to-your-image.jpg') no-repeat;*/
+/*    -webkit-background-clip: text;*/
+/*    color: transparent;*/
+/*}*/
+
+.username {
+    display: flex;
+    flex-direction: column;
+}
+
+.username input::placeholder {
+    font-size: 1.8rem;
+}
+
+.username input {
+    border-bottom: 2px solid white;
+    border-top: none;
+    font-family: inherit;
+    color: black;
+    border-right: none;
+    border-left: none;
+    background: none;
+    font-size: 2.4rem;
+}
+
+.username input:focus {
+    outline: none;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+
+.question-title {
+    font-size: 3.2rem;
+}
+
+.mode-selection .options {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.mode-selection div img {
+    height: 5.4rem;
+}
+
+/* Hide the default radio button */
+input[type="radio"] {
+    display: none;
+}
+
+/* Create a custom radio button */
+input[type="radio"] + label {
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+}
+
+input[type="radio"] + label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #aaa;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+/* Style the custom radio button when checked */
+input[type="radio"]:checked + label:before {
+    background-color: #aaa;
+}
+
+.gameModes {
+    padding: 1.2rem 0px;
+    display: flex;
+    column-gap: 1.2rem;
+    margin: -2.4rem 0;
+    padding-bottom: 4.8rem;
+}
+
+.mode-btn {
+    padding: 0.8rem;
+    border: none;
+    border-radius: 4.2px;
+    font-size: 2.4rem;
+}
+
+.easy-lvl {
+    background-color: #6cbe45;
+}
+
+.mid-lvl {
+    background-color: yellow;
+}
+
+.high-lvl {
+    background-color: #be4545;
+}
+
+.submit-btn {
+    display: flex;
+    justify-content: center;
+}
+
+.submit-btn button {
+    padding: 1.2rem;
+    border-radius: 4.8px;
+    border: none;
+    font-family: inherit;
+    background-color: white;
+    color: darkgreen;
+}
+
+.submit-btn button:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid white;
+}
+
+
+/*Media Query*/
+
+@media screen and (max-width: 768px) {
+    body {
+        background-image: url(../Memory_Game/assets/background/bg-2.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
+

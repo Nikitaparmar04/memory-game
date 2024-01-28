@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="PicsFlip! Memory Game for Kids" />
+    <meta
+      name="keywords"
+      content="Memory game, memory, memo, game, preschool kids, kids game, toddler game"
+    />
+    <meta name="author" content="nikita Parmar" />
+    <link rel="stylesheet" href="LoginMain(Copy).css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Memory Game</title>
+  </head>
+  <body>
+    <section class="login-page container">
+      <div class="primary-heading">
+        Memory Game
+        <img class="pHeading-logo" src="assets/memory.png" alt="logo of game" />
+      </div>
+      <form class="login-form" action="./PlayArea(Copy).html" method="post">
+        <div class="setting">Settings</div>
+
+        <div class="username">
+          <label class="question-title" for="username">What is your Name? 👀</label>
+          <br />
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Enter your Name here"
+            maxlength="15"
+            aria-label="Type your name here"
+            required
+          />
+        </div>
+
+        <div class="mode-selection">
+          <label class="question-title" for="mode">Choose a mode</label>
+          <div class="options">
+            <div class="mode">
+              <input type="radio" name="mode" id="child" value="child" />
+              <label for="child">
+                <img src="assets/corgi.png" alt="Child" class="radio-background" />
+              </label>
+            </div>
+            <div class="mode">
+              <input type="radio" name="mode" id="adult" value="adult" />
+              <label for="adult">
+                <img src="assets/Adult.png" alt="Adult" class="radio-background" />
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <span class="question-title"> Choose Difficulty</span>
+        <div class="gameModes" id="gameModes">
+          <input type="radio" name="difficulty" id="easy" value="Easy" />
+          <label class="easy-lvl mode-btn" for="easy">Easy</label>
+          
+          <input type="radio" name="difficulty" id="medium" value="Medium" />
+          <label class="mid-lvl mode-btn" for="medium">Medium</label>
+          
+          <input type="radio" name="difficulty" id="hard" value="Hard" />
+          <label class="high-lvl mode-btn" for="hard">Hard</label>
+        </div>
+
+        <div class="submit-btn">
+          <button class="submit" type="submit">Start Game</button>
+        </div>
+      </form>
+    </section>
+
+    <script src="./loginMain.js"></script>
+    <script src="./PlayArea.js"></script>
+  </body>
+</html>
