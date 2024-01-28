@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="PicsFlip! Memory Game for Kids">
+    <meta name="keywords" content="Memory game, memory, memo, game, preschool kids, kids game, toddler game">
+    <meta name="author" content="nikita Parmar">
+    <link rel="stylesheet" href="LoginMain.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>memory game</title>
+</head>
+<body>
+<div class="heading">
+    <h1>Hi , there!!</h1>
+</div>
+<div class="form">
+    <div>
+        <div class="userinfo">
+            <h1 class="player-name">Who wants to <br> play ?</h1>
+            <input class="input-box" type="text" name="username" id="username" maxlength="15" aria-label="Type your name here" required>
+        </div>
+        <div class="age-group">
+            <h̥2>choose a picture</h̥2>
+        </div>
+        <div class="select-whole">
+            <label for="child">
+                <input type="radio" id="child" name="ageGroup" value="child">
+                <img src="./assets/" alt="Child" class="radio-background">
+            </label>
+
+            <label for="adult">
+                <input type="radio" id="adult" name="ageGroup" value="adult">
+                <img src="" alt="Adult" class="radio-background">
+            </label>
+        </div>
+        <div class="gameModes" id="gameModes">
+            <button class="easy-lvl mode-btn" onclick="startGame(4)">Easy</button>
+            <button class="mid-lvl mode-btn" onclick="startGame(6)">Medium</button>
+            <button class="high-lvl mode-btn" onclick="startGame(8)">Hard</button>
+        </div>
+        <div class="checkbox-wrapper-31">
+            <input checke̥̥̥̥̥̥d="" id="checkbox" type="checkbox">
+            <svg viewBox="0 0 35.6 35.6">
+                <circle class="background" cx="17.8" cy="17.8" r="17.8"></circle>
+                <circle class="stroke" cx="17.8" cy="17.8" r="14.37"></circle>
+                <polyline class="check" points="11.78 18.12 15.55 22.23 25.17 12.87"></polyline>
+            </svg>
+        </div>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
+

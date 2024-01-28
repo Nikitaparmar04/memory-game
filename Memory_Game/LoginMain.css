@@ -59,7 +59,7 @@ input {
     font-size: 4rem;
     /* Make the input fill the container */
 }
-.player-name {
+.secondary-ques {
     font-size: 50px;
     color: #be4545;
 }
@@ -71,7 +71,7 @@ input {
     outline: none;
     
 }
-.age-group{
+.secondary-ques{
     font-size: 30px;
     padding-top: 6px;
     color: #be4545;
@@ -168,6 +168,10 @@ input {
   
   .checkbox-wrapper-31 input[type=checkbox]:checked + svg .check {
     stroke-dashoffset: 0;
+  }
+
+  #checkbox{
+    border: 1px solid black;
   }
   
 
