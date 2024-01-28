@@ -18,7 +18,7 @@ body {
 .parent {
     height: 100vh;
     width: 100vw;
-    background-image: url(assets/background/game2.png);
+    /*background-image: url(assets/background/game2.png);*/
     display: flex;
     font-family: inherit;
     background-repeat: no-repeat;
@@ -84,17 +84,18 @@ body {
 
 .cardArea {
     /*border: 5px solid black;*/
-    height: 100vh;
+    height: 100%;
     width: 100%;
     display: grid;
     /*grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));*/
     gap: 1rem;
-    padding: 1rem;
+    padding: 2rem;
     max-height: 100%;
     max-width: 100%;
     margin: auto;
     box-sizing: border-box;
     overflow: auto;
+    /* overflow: hidden; */
 }
 
 .Mainbody {
@@ -168,7 +169,6 @@ body {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 1rem;
         border-radius: 2rem;
         padding-bottom: 1rem;
         
@@ -224,17 +224,19 @@ body {
 
 .flip-card {
     background-color: transparent;
-    width: 190px;
-    height: 254px;
+    /* width: 190px; */
+    /* height: 254px; */
     perspective: 1000px;
     font-family: sans-serif;
+    /* margin: 1rem; */
 }
 
 .title {
-    font-size: 1.5em;
+    font-size: 8.2em;
     font-weight: 900;
     text-align: center;
     margin: 0;
+    font-family: inherit;
 }
 
 .flip-card-inner {
@@ -277,20 +279,18 @@ body {
     color: white;
     transform: rotateY(180deg);
     background-image: url('assets/child/ (1).png');
-    background-size: cover;
+    background-size: 40%;
+    background-repeat: no-repeat;
     background-position: center;
 }
 
-.flip-card:hover .flip-card-front {
-    visibility: hidden;
-}
 
 .flip-card.flipped .flip-card-front {
     visibility: hidden;
 }
 
 .start_game {
-    margin-bottom: 24rem;
+    margin-bottom: 8rem;
 }
 
 .start_game button {
@@ -301,6 +301,7 @@ body {
     color: darkgreen;
     font-size: 1.8rem;
     border: 2px solid transparent;
+    cursor: pointer;
 }
 
 .question_image img {

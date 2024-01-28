@@ -7,18 +7,36 @@ let guessedImageSrc = '';
 let canFlipCard = false;
 // Initialize game variables
 let currentScore = 0;
-let highscore = 0;
+let highscore = localStorage.getItem('Highscore') || 0;
 let toGuessImageNumber;
+let flippedCard = false;
+
+
+// Setting selected difficulty mode in left-aside section 
+document.addEventListener('DOMContentLoaded', function () {
+    console.log('Content Loaded')
+    if(storedDifficulty === 'Easy'){
+        document.querySelector('.medium').style.display = 'none';
+        document.querySelector('.hard').style.display = 'none';
+    }else if(storedDifficulty === 'Medium'){
+        document.querySelector('.easy').style.display = 'none';
+        document.querySelector('.hard').style.display = 'none';
+    }else{
+        document.querySelector('.easy').style.display = 'none';
+        document.querySelector('.medium').style.display = 'none';
+    }
+});
 
 
 // Utility Functions
 function getScoreIncrement(level) {
+    console.log('Score Level has Been Assigned')
     switch (level) {
-        case 'easy':
+        case 'Easy':
             return 10;
-        case 'medium':
+        case 'Medium':
             return 5;
-        case 'hard':
+        case 'Hard':
             return 3;
         default:
             return 0;
@@ -26,6 +44,7 @@ function getScoreIncrement(level) {
 }
 
 function updateScores() {
+    console.log('score upated')
     const highScoreEl = document.getElementById('Highscore');
     const currentScoreEl = document.getElementById('currentScore');
     if (highScoreEl && currentScoreEl) {
@@ -45,20 +64,32 @@ function updateScores() {
 // }
 
 function init() {
-    currentScore = 0;
-    highscore = 0; // Assuming you want to reset highscore as well
+    console.log('Game has been Initialized')
+    // currentScore = 0;
+    // highscore = 0; // Assuming you want to reset highscore as well
     updateScores();
     generateCardGrid(storedDifficulty);
-    pickGuessedImage();
     initializeCards();
-    startTimer(storedDifficulty, function () {
-        console.log('Timer ended for easy level');
-    });
-    // TODO: Implement GenImageToGuess logic
+    startTimer(storedDifficulty, onTimerEnd);
+    canFlipCard = true;
+    flippedCard = false
 }
+
+function Reset() {
+    console.log('Game has been Initialized')
+    currentScore = 0;
+    updateScores();
+    generateCardGrid(storedDifficulty);
+    initializeCards();
+    startTimer(storedDifficulty, onTimerEnd);
+    canFlipCard = true;
+    flippedCard = false
+}
+
 
 // Event Listeners
 document.addEventListener('DOMContentLoaded', function () {
+    console.log('User Name has been updated')
     // Set player name
     const playerNameEl = document.querySelector('.p-name');
     if (playerNameEl) {
@@ -68,15 +99,21 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     document.querySelector('.start_game').addEventListener('click', init);
-    // Initialize game if submitted
-    // if (localStorage.getItem('isSubmitted') === 'true') {
-    //     init();
-    //     localStorage.removeItem('isSubmitted');
-    // }
+
+    const refreshButton = document.getElementById('refreshButton');
+    if (refreshButton) {
+        refreshButton.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent the default action of the link
+            Reset(); // Call the init function to reset the game
+        });
+    } else {
+        console.error('Refresh button not found');
+    }
 });
 
 
 function setCardGrid(numCards) {
+    console.log('Card number has been set up')
     const gameArea = document.querySelector('.cardArea');
     const parentElement = gameArea.parentElement;
 
@@ -100,12 +137,17 @@ function setCardGrid(numCards) {
     gameArea.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
     gameArea.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
 
+
+    console.log('Gird size SET')
+
     // Adjust card sizes based on the number of columns
     // Adjust for any padding and gap within the gameArea
     const gapSize = 10; // If you have set a gap in your CSS
     const paddingSize = 10; // If you have set padding in your CSS
     const totalGapWidth = gapSize * (cols - 1);
     const totalGapHeight = gapSize * (rows - 1);
+
+    console.log('Gird Padding SET')
 
     // Calculate the available width and height for the cards
     // const availableWidth = gameArea.offsetWidth - totalGapWidth - (paddingSize * 2);
@@ -116,20 +158,26 @@ function setCardGrid(numCards) {
     const availableHeight = Math.min(parentElement.clientHeight - totalGapHeight - (paddingSize * 2), gameArea.offsetHeight);
 
 
+
     // Assume a square card for simplicity; adjust based on your desired aspect ratio
     const cardWidth = availableWidth / cols;
     const cardHeight = availableHeight / rows;
 
+    console.log('Card Height and Width Set')
+
     // Set size of cards to fit within the grid
     const cards = gameArea.querySelectorAll('.flip-card');
-    cards.forEach(card => {
-        card.style.width = `${cardWidth}px`;
-        card.style.height = `${cardHeight}px`;
-    });
+    // cards.forEach(card => {
+    //     card.style.width = `${cardWidth}px`;
+    //     card.style.height = `${cardHeight}px`;
+    // });
 }
 
 
 function generateCardGrid(level) {
+
+    console.log('Grid Generation Started')
+
     const gameArea = document.querySelector('.cardArea');
     if (!gameArea) {
         console.error('The gameArea element was not found in the DOM.');
@@ -151,21 +199,24 @@ function generateCardGrid(level) {
         const flipCard = document.createElement('div');
         flipCard.className = 'flip-card';
         flipCard.innerHTML = `
-  <div class="flip-card-inner">
-    <div class="flip-card-front">
-      <p class="title">Flip Me</p>
-      <p>Hover Me</p>
-    </div>
-    <div class="flip-card-back" style="background-image: url('./assets/child/${imageNumber}.png');">
-      <!-- The back face of the card -->
-    </div>
-  </div>
-`;
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                    <p class="title">${i + 1}</p>
+                    </div>
+                    <div class="flip-card-back" style="background-image: url('./assets/child/${imageNumber}.png');">
+                    <!-- The back face of the card -->
+                    </div>
+                </div>`
+                ;
+
+        console.log('Grid Generation Finished')
 
         gameArea.appendChild(flipCard);
-    }
 
+    }
     setCardGrid(numCards);
+
+    initializeCards();
 }
 
 /*=================== TIME FUNCTION =========================*/
@@ -176,9 +227,22 @@ function onTimerEnd() {
 
     // Now allow cards to be clicked and flipped back to the image
     canFlipCard = true;
+
+    // Pick a guessed image when the timer ends
+    pickGuessedImage();
+
+    // Flip back all images with front side Number 1 to difficulty level in loop
+    for (let i = 1; i <= storedDifficulty; i++) {
+        document.querySelector(`.flip-card-back[style*="assets/child/${i}.png"] .flip-card-inner`).style.transform = '';
+    }
+
+    console.log('Timer Finished')
 }
 
 function startTimer(gameLevel, onTimerEnd) {
+
+    console.log('Timer Started')
+
     let duration;
     switch (gameLevel) {
         case 'Easy':
@@ -210,23 +274,49 @@ function startTimer(gameLevel, onTimerEnd) {
 
 
 function onCardClick(e) {
-    if (!canFlipCard) return; // Ignore clicks if the cards shouldn't be flipped
+    if (!canFlipCard || flippedCard) return;
 
     let cardInner = e.currentTarget.querySelector('.flip-card-inner');
 
-    // Check if the card is already facing up, if so, ignore the click
     if (cardInner.style.transform === 'rotateY(180deg)') {
         return;
     }
 
-    // Flip the card
     cardInner.style.transform = 'rotateY(180deg)';
+    flippedCard = true;
 
-    // Check if the card's image matches the guessed image
     let cardImage = cardInner.querySelector('.flip-card-back').style.backgroundImage;
-    if (cardImage === guessedImageSrc) {
-        currentScore += getScoreIncrement(level); // Increase score based on level
+    cardImage = cardImage.replace('url("', '').replace('")', '');
+    let cardImageNumber = cardImage.split('/').pop().replace('.png', '');
+
+    guessedImageSrc = guessedImageSrc.replace('url("', '').replace('")', '');
+    let guessedImageNumber = guessedImageSrc.split('/').pop().replace('.png', '');
+
+    if (cardImageNumber === guessedImageNumber) {
+        currentScore += getScoreIncrement(storedDifficulty);
+        if (currentScore > highscore) {
+            highscore = currentScore;
+            // Save highscore to localStorage
+            localStorage.setItem('highscore', highscore);
+        }
         updateScores();
+        flippedCard = false;
+        setTimeout(() => {
+            document.querySelectorAll('.flip-card-inner').forEach(card => card.style.transform = 'rotateY(180deg)');
+            document.querySelector(`.flip-card-back[style*="assets/child/${guessedImageNumber}.png"]`).parentElement.parentElement.style.border = '3px solid green';
+            setTimeout(init, 3000);
+        }, 2000);
+
+        document.querySelector('.question_image img').src = '';
+
+    } else {
+        setTimeout(() => {
+            document.querySelectorAll('.flip-card-inner').forEach(card => card.style.transform = 'rotateY(180deg)');
+            document.querySelector(`.flip-card-back[style*="assets/child/${guessedImageNumber}.png"]`).parentElement.parentElement.style.border = '3px solid red';
+            setTimeout(init, 3000);
+        }, 2000);
+
+        document.querySelector('.question_image img').src = '';
     }
 }
 
@@ -237,15 +327,20 @@ document.querySelectorAll('.flip-card').forEach(card => {
 
 // Pick a random card's image as the guessed image when the game starts
 function pickGuessedImage() {
+    console.log('Guess Image Generated')
     const cards = document.querySelectorAll('.flip-card-back');
     const randomCardIndex = Math.floor(Math.random() * cards.length);
     guessedImageSrc = cards[randomCardIndex].style.backgroundImage;
     // Set the guessed image in the question image span
     document.querySelector('.question_image img').src = guessedImageSrc.replace('url("', '').replace('")', '');
+    console.log(document.querySelector('.question_image img').src)
 }
 
 function initializeCards() {
-    const cards = document.querySelectorAll('.flip-card-inner');
-    cards.forEach(card => card.style.transform = 'rotateY(180deg)');
+    const cards = document.querySelectorAll('.flip-card');
+    cards.forEach(card => {
+        card.addEventListener('click', onCardClick);
+        card.querySelector('.flip-card-inner').style.transform = 'rotateY(180deg)';
+    });
 }
 
