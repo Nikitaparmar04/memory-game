@@ -12,5 +12,5 @@ form.addEventListener('submit', function (e) {
     localStorage.setItem('mode', mode);
     localStorage.setItem('difficulty', difficulty);
     localStorage.setItem('isSubmitted', 'true');
-    window.location.href = './PlayArea(Copy).html';
+    window.location.href = 'PlayArea.html';
 });

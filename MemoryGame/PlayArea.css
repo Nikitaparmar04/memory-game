@@ -18,7 +18,7 @@ body {
 .parent {
     height: 100vh;
     width: 100vw;
-    /*background-image: url(assets/background/game2.png);*/
+    background-image: url(assets/background/game2.png);
     display: flex;
     font-family: inherit;
     background-repeat: no-repeat;
@@ -220,6 +220,79 @@ body {
         width: 6rem;
         height: 6rem;
     }
+}
+
+.popup-card {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1.8rem 2.4rem;
+    background-color: #f8f8f8;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 20px;
+    text-align: center;
+    height: 49vh;
+    width: 48vw;
+}
+
+.popup-card.show {
+    display: block;
+}
+
+h2 {
+    color: #333;
+    font-size: 3.4rem;
+    padding-bottom: 1.2rem;
+}
+
+p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+ol {
+    text-align: left;
+    padding-bottom: 1.2rem;
+    list-style-type: none;
+}
+
+li {
+    color: #888;
+    margin-bottom: 10px;
+    font-size: 2.2rem;
+}
+
+button {
+    padding: 12px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #888;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.close-button:hover {
+    color: #555;
 }
 
 .flip-card {

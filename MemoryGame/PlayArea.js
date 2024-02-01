@@ -344,3 +344,9 @@ function initializeCards() {
     });
 }
 
+function toggleCard(cardId) {
+    var card = document.getElementById(cardId);
+    card.style.display = (card.style.display === 'none' || card.style.display === '') ? 'block' : 'none';
+}
+
+
