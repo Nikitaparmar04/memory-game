@@ -333,8 +333,6 @@ function onCardClick(e) {
             correctCard.parentElement.parentElement.style.borderRadius = '10px'; // rounded corners
             // Remove the border of the parent card
             correctCard.parentElement.parentElement.parentElement.style.border = 'none';
-            document.querySelectorAll('.flip-card-inner').forEach(card => card.style.opacity = '0.5');
-
             setTimeout(init, 12000);
         }, 2000);
 
