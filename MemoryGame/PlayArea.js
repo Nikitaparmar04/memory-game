@@ -2,30 +2,46 @@
 
 // Getting data from the login page
 const storedUsername = localStorage.getItem('username');
-const storedDifficulty = localStorage.getItem('difficulty');
-let guessedImageSrc = '';
-let canFlipCard = false;
+const storedDifficulty = 'Medium'; 
+let guessedImageSrc = ''; /* abhi responsiveness wala karna, or border wala and its finished */
+let canFlipCard = false; /*  */
 // Initialize game variables
 let currentScore = 0;
 let highscore = localStorage.getItem('Highscore') || 0;
 let toGuessImageNumber;
 let flippedCard = false;
+let timer = true;
 
 
-// Setting selected difficulty mode in left-aside section 
-document.addEventListener('DOMContentLoaded', function () {
-    console.log('Content Loaded')
-    if(storedDifficulty === 'Easy'){
-        document.querySelector('.medium').style.display = 'none';
-        document.querySelector('.hard').style.display = 'none';
-    }else if(storedDifficulty === 'Medium'){
-        document.querySelector('.easy').style.display = 'none';
-        document.querySelector('.hard').style.display = 'none';
-    }else{
-        document.querySelector('.easy').style.display = 'none';
-        document.querySelector('.medium').style.display = 'none';
-    }
-});
+console.log('Data has been fetched from the login page')
+const Game_Detail = {
+    'Username': storedUsername,
+    'Difficulty': storedDifficulty,
+    'Highscore': highscore,
+    'CurrentScore': currentScore,
+    'Timer': timer,
+    'canFlipCard': canFlipCard,
+    'flippedCard': flippedCard,
+    'toGuessImageNumber': toGuessImageNumber,
+    'guessedImageSrc': guessedImageSrc,
+};
+
+console.log(Game_Detail);
+
+// Setting selected difficulty mode in a left-aside section 
+// document.addEventListener('DOMContentLoaded', function () {
+//     console.log('Content Loaded')
+//     if (storedDifficulty === 'Easy') {
+//         document.querySelector('.medium').style.display = 'none';
+//         document.querySelector('.hard').style.display = 'none';
+//     } else if (storedDifficulty === 'Medium') {
+//         document.querySelector('.easy').style.display = 'none';
+//         document.querySelector('.hard').style.display = 'none';
+//     } else {
+//         document.querySelector('.easy').style.display = 'none';
+//         document.querySelector('.medium').style.display = 'none';
+//     }
+// });
 
 
 // Utility Functions
@@ -53,6 +69,7 @@ function updateScores() {
     } else {
         console.error('Score elements not found');
     }
+
 }
 
 
@@ -64,16 +81,17 @@ function updateScores() {
 // }
 
 function init() {
+    timer = false;
+    start_disable(timer);
     console.log('Game has been Initialized')
-    // currentScore = 0;
-    // highscore = 0; // Assuming you want to reset highscore as well
-    updateScores();
+    // updateScores();
     generateCardGrid(storedDifficulty);
     initializeCards();
     startTimer(storedDifficulty, onTimerEnd);
     canFlipCard = true;
     flippedCard = false
 }
+
 
 function Reset() {
     console.log('Game has been Initialized')
@@ -102,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const refreshButton = document.getElementById('refreshButton');
     if (refreshButton) {
-        refreshButton.addEventListener('click', function(e) {
+        refreshButton.addEventListener('click', function (e) {
             e.preventDefault(); // Prevent the default action of the link
             Reset(); // Call the init function to reset the game
         });
@@ -158,7 +176,6 @@ function setCardGrid(numCards) {
     const availableHeight = Math.min(parentElement.clientHeight - totalGapHeight - (paddingSize * 2), gameArea.offsetHeight);
 
 
-
     // Assume a square card for simplicity; adjust based on your desired aspect ratio
     const cardWidth = availableWidth / cols;
     const cardHeight = availableHeight / rows;
@@ -187,6 +204,7 @@ function generateCardGrid(level) {
     gameArea.innerHTML = ''; // Clear the game area
 
     const numCards = level === 'Easy' ? 4 : level === 'Medium' ? 9 : 16; // Determine the number of cards based on level
+    console.log(`Number of cards: ${numCards}`)
     const usedImages = new Set(); // To keep track of images already used
 
     for (let i = 0; i < numCards; i++) {
@@ -207,7 +225,7 @@ function generateCardGrid(level) {
                     <!-- The back face of the card -->
                     </div>
                 </div>`
-                ;
+        ;
 
         console.log('Grid Generation Finished')
 
@@ -237,13 +255,16 @@ function onTimerEnd() {
     }
 
     console.log('Timer Finished')
+
 }
+
+let duration;
 
 function startTimer(gameLevel, onTimerEnd) {
 
     console.log('Timer Started')
 
-    let duration;
+
     switch (gameLevel) {
         case 'Easy':
             duration = 5;
@@ -293,18 +314,28 @@ function onCardClick(e) {
     let guessedImageNumber = guessedImageSrc.split('/').pop().replace('.png', '');
 
     if (cardImageNumber === guessedImageNumber) {
+        // Update Current score
         currentScore += getScoreIncrement(storedDifficulty);
+        // Update highscore
         if (currentScore > highscore) {
             highscore = currentScore;
             // Save highscore to localStorage
             localStorage.setItem('highscore', highscore);
         }
+        // Update score elements
         updateScores();
-        flippedCard = false;
+        flippedCard = false; // Reset flippedCard
         setTimeout(() => {
             document.querySelectorAll('.flip-card-inner').forEach(card => card.style.transform = 'rotateY(180deg)');
-            document.querySelector(`.flip-card-back[style*="assets/child/${guessedImageNumber}.png"]`).parentElement.parentElement.style.border = '3px solid green';
-            setTimeout(init, 3000);
+            // Set a specific green border style to the correct card
+            let correctCard = document.querySelector(`.flip-card-back[style*="assets/child/${guessedImageNumber}.png"]`);
+            correctCard.parentElement.parentElement.style.boxShadow = '0 0 10px 10px #32CD32'; // a green glow effect
+            correctCard.parentElement.parentElement.style.borderRadius = '10px'; // rounded corners
+            // Remove the border of the parent card
+            correctCard.parentElement.parentElement.parentElement.style.border = 'none';
+            document.querySelectorAll('.flip-card-inner').forEach(card => card.style.opacity = '0.5');
+
+            setTimeout(init, 12000);
         }, 2000);
 
         document.querySelector('.question_image img').src = '';
@@ -313,12 +344,13 @@ function onCardClick(e) {
         setTimeout(() => {
             document.querySelectorAll('.flip-card-inner').forEach(card => card.style.transform = 'rotateY(180deg)');
             document.querySelector(`.flip-card-back[style*="assets/child/${guessedImageNumber}.png"]`).parentElement.parentElement.style.border = '3px solid red';
-            setTimeout(init, 3000);
+            setTimeout(init, 1200);
         }, 2000);
 
         document.querySelector('.question_image img').src = '';
     }
 }
+
 
 // Add click event listener to cards
 document.querySelectorAll('.flip-card').forEach(card => {
@@ -348,5 +380,23 @@ function toggleCard(cardId) {
     var card = document.getElementById(cardId);
     card.style.display = (card.style.display === 'none' || card.style.display === '') ? 'block' : 'none';
 }
+
+//  Update 0.1v
+
+const disableLinks = document.querySelectorAll('.disable-link');
+
+disableLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+    })
+})
+
+const start_disable = function (timer) {
+    if (timer === false) {
+        document.querySelector('#startGame').style.display = 'none';
+    }
+}
+
+
 
 
